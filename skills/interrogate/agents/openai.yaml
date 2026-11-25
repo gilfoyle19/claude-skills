@@ -1,0 +1,3 @@
+interface:
+  display_name: "Interrogate"
+  short_description: "Pressure-test an idea one wave of questions at a time"

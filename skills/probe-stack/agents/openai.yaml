@@ -1,0 +1,5 @@
+interface:
+  display_name: "Probe Stack"
+  short_description: "Probe a software design across every layer"
+policy:
+  allow_implicit_invocation: false

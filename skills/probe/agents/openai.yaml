@@ -1,0 +1,5 @@
+interface:
+  display_name: "Probe"
+  short_description: "Sharpen a plan through questioning"
+policy:
+  allow_implicit_invocation: false
