@@ -1,10 +1,10 @@
 ---
 name: probe-stack
-description: A persistent questioning session for a software feature, system, or architecture that covers every layer of the stack (product, data, logic, API/integration, UI, security, compliance, performance, reliability, observability, infrastructure, testing) before anything is built.
+description: A persistent questioning session for a software feature, system, or architecture that covers every layer of the stack (product, data, logic, API/integration, UI, security, compliance, performance, reliability, observability, infrastructure, testing) before anything is built, recording a glossary and decision records (ADRs) along the way.
 disable-model-invocation: true
 ---
 
-Call the Skill tool with "interrogate", and run that session with the layer coverage below on top of it. Everything in `interrogate` still applies: waves of questions drawn from the ready set, a suggested answer on every question, facts looked up rather than asked, and no action until the user confirms common ground.
+Call the Skill tool twice, for "interrogate" and "domain-modeling", and run that session with the layer coverage below on top of it. Everything in both still applies: waves of questions drawn from the ready set, a suggested answer on every question, facts looked up rather than asked, terms challenged and written to `GLOSSARY.md` as they settle, ADRs offered only when a decision passes all three tests, and no action until the user confirms common ground.
 
 ## Why layers
 
@@ -56,6 +56,15 @@ Coverage: Product ✅ · Data ✅ · Logic ⏳ · API ⏳ · UI ⬜ · Security 
 
 ✅ settled · ⏳ in progress · ⬜ not started · ➖ not applicable (user agreed)
 
+## Docs across layers
+
+The layers and the docs feed each other, so record as you go rather than at the end:
+
+- **Glossary terms mostly surface in Product, Data, and Logic.** Entities, states, and business rules are where vague words ("account", "booking", "cancelled") hide. Pin them down there, before other layers build on them.
+- **ADR candidates mostly surface in Data, API / Integration, Security, Compliance, and Infrastructure.** Choices of database, integration style, auth provider, data residency, and hosting are often costly to undo. Apply the three tests from `domain-modeling` to each; most choices in UI, Testing, and Observability won't pass them.
+- **Keep the two apart.** Layer decisions about *how* something is built belong in ADRs or the summary, never in `GLOSSARY.md`, which stays free of implementation detail.
+- When a term or ADR is written during a wave, say so in one line after the coverage line, e.g. `Recorded: GLOSSARY "Appointment" · ADR 0002-twilio-for-sms`.
+
 ## When the session is done
 
-The session ends when the ready set is empty **and** every core layer is ✅ or ➖. A layer can only be ➖ if the user agreed it doesn't apply; never mark one ➖ silently. Then give a short summary of decisions grouped by layer, and wait for the user to confirm common ground before acting on any of it.
+The session ends when the ready set is empty **and** every core layer is ✅ or ➖. A layer can only be ➖ if the user agreed it doesn't apply; never mark one ➖ silently. Then give a short summary of decisions grouped by layer, followed by the glossary terms added and the ADRs written, and wait for the user to confirm common ground before acting on any of it.

@@ -10,7 +10,7 @@ Skills for [Claude Code](https://claude.com/claude-code) that question you about
 | `probe` | You type `/probe` | Runs an `interrogate` session on any subject: code, product, business, writing |
 | `domain-modeling` | Claude starts it when glossary or ADR work comes up | Sharpens a project's vocabulary as you design, keeping `GLOSSARY.md` and decision records (`docs/adr/`) up to date |
 | `probe-with-docs` | You type `/probe-with-docs` | `interrogate` + `domain-modeling`: the same session, recording a glossary and ADRs as it goes |
-| `probe-stack` | You type `/probe-stack` | An `interrogate` session for software that must cover every layer of the stack: product, data, logic, API/integration, UI, security, compliance, performance, reliability, observability, infrastructure, and testing |
+| `probe-stack` | You type `/probe-stack` | `interrogate` + `domain-modeling` for software: must cover every layer of the stack (product, data, logic, API/integration, UI, security, compliance, performance, reliability, observability, infrastructure, and testing) while recording a glossary and ADRs as it goes |
 
 `probe`, `probe-with-docs`, and `probe-stack` call the other skills by name, so install them together.
 
